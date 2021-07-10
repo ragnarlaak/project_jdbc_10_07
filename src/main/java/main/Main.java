@@ -15,6 +15,17 @@ public class Main {
         employee.setDateOfBirth("1996-07-15");
         employee.setSalary(7500);
 
-        repository.saveEmployee(employee);
+        //repository.saveEmployee(employee);
+
+        Employee emp1 = new Employee();
+        emp1.setEmployeeId(8);
+        emp1.setSalary(8500);
+        //repository.updateEmployee(emp1);
+
+
+        Employee emp2 = new Employee();
+        emp2.setEmployeeId(7);
+        repository.deleteEmployee(emp2);
+
     }
 }

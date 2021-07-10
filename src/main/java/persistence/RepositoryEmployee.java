@@ -43,11 +43,36 @@ public class RepositoryEmployee {
     }
 
     public void updateEmployee(Employee employee) {
+        String sql = "UPDATE employees SET salary = ? WHERE employeeId = ?";
+        try {
+            pst = connection.prepareStatement(sql);
+            pst.setInt(1, employee.getSalary());
+            pst.setInt(2, employee.getEmployeeId());
 
+            int result = pst.executeUpdate();
+            if (result > 0){
+                System.out.println("Employee updated successfully");
+            }
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     public void deleteEmployee(Employee employee) {
+        String sql = "DELETE FROM employees WHERE employeeId = ?";
+        try {
+            pst = connection.prepareStatement(sql);
+            pst.setInt(1, employee.getEmployeeId());
+            int result = pst.executeUpdate();
 
+            if (result > 0) {
+                System.out.println("Employee deleted successfully");
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     public Employee findEmployeeById(int employeeId) {
